@@ -1,15 +1,26 @@
 import ColoredNumber from "./ColoredNumber";
+import { useState } from "react";
 
 export default function Counter() {
+  const [count, setCount] = useState(0);
+  function handleAddition() {
+    setCount(count + 1);
+  }
+
+  function handleSubtraction() {
+    setCount(count - 1);
+  }
+
   return (
     <div className="counter">
       <h1>Colored Number</h1>
-      <ColoredNumber value={0} />
+      <ColoredNumber value={count} />
       <div className="counter__buttons-container">
         <button
           type="button"
           className="counter__button"
           aria-label="increment count"
+          onClick={handleAddition}
         >
           +
         </button>
@@ -17,6 +28,7 @@ export default function Counter() {
           type="button"
           className="counter__button"
           aria-label="decrement count"
+          onClick={handleSubtraction}
         >
           -
         </button>
